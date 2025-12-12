@@ -2,155 +2,154 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>My Repository — Apple Style</title>
+<title>My Repository — Apple Premium</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-/* ---------------------- GLOBAL ---------------------- */
+/* ---------------- GLOBAL STYLE ---------------- */
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                 Roboto, Helvetica Neue, Arial, sans-serif;
-    background: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+                 "Segoe UI", Arial, sans-serif;
+    background: #fafafa;
     color: #1d1d1f;
-    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* Smooth fade-in */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ---------------------- HEADER ---------------------- */
-header {
+@keyframes fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ---------------- HERO ---------------- */
+.hero {
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 120px 20px 80px;
-    animation: fadeIn 1.2s ease-out;
+    background: radial-gradient(circle at 50% 20%, #ffffff, #e5e5e7);
+    padding: 0 20px;
+    animation: fade 1.4s ease-out;
 }
 
-h1 {
-    font-size: 52px;
+.hero h1 {
+    font-size: 64px;
     font-weight: 700;
-    margin-bottom: 10px;
-    letter-spacing: -1px;
+    letter-spacing: -1.5px;
+    margin-bottom: 15px;
 }
 
-.subtitle {
+.hero p {
     font-size: 22px;
-    font-weight: 400;
     color: #6e6e73;
-    margin-top: 0;
 }
 
-/* ---------------------- CONTENT ---------------------- */
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 20px 100px;
+/* ---------------- GLASS CARD ---------------- */
+.card {
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 50px;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+    animation: fadeUp 1.2s ease-out;
 }
 
-/* Apple-like card */
-.section {
-    margin-bottom: 90px;
-    animation: fadeIn 1.4s ease-out;
+.card h2 {
+    font-size: 36px;
+    margin-bottom: 18px;
 }
 
-.section h2 {
-    font-size: 32px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: #1d1d1f;
-}
-
-.section p {
-    font-size: 18px;
+.card p {
+    font-size: 20px;
     color: #515154;
 }
 
-/* Code block — clean Apple style */
+/* ---------------- CODE BLOCK ---------------- */
 pre {
-    background: #f5f5f7;
-    padding: 18px 20px;
-    border-radius: 12px;
-    overflow-x: auto;
+    background: #f2f2f5;
+    padding: 20px;
+    border-radius: 18px;
     font-size: 16px;
-    border: 1px solid #e5e5e7;
+    overflow-x: auto;
+    border: 1px solid #e0e0e2;
 }
 
 code {
+    font-family: "SF Mono", monospace;
     color: #1d1d1f;
-    font-family: "SF Mono", Consolas, "Liberation Mono", monospace;
 }
 
-/* Clean Apple-style link */
+/* ---------------- LINKS ---------------- */
 a {
     color: #0071e3;
     text-decoration: none;
     font-weight: 500;
 }
+a:hover { text-decoration: underline; }
 
-a:hover {
-    text-decoration: underline;
-}
-
-/* Footer */
+/* ---------------- FOOTER ---------------- */
 footer {
     text-align: center;
+    padding: 60px 20px;
+    color: #86868b;
     font-size: 14px;
-    color: #6e6e73;
-    padding: 50px 0 40px;
 }
 </style>
-</head>
 
+</head>
 <body>
 
-<header>
-    <h1>My GitHub Repository</h1>
-    <p class="subtitle">Simple. Elegant. Functional. Inspired by Apple.</p>
-</header>
-
-<div class="container">
-
-    <div class="section">
-        <h2>Overview</h2>
-        <p>
-            A clean and minimal repository page built in the visual style of Apple —
-            refined typography, elegant spacing, and a focus on clarity.  
-            Easily adaptable and perfect for GitHub Pages.
-        </p>
+<!-- HERO -->
+<section class="hero">
+    <div>
+        <h1>My GitHub Repository</h1>
+        <p>Designed with clarity, precision, and the elegance of Apple.</p>
     </div>
+</section>
 
-    <div class="section">
-        <h2>Clone the Repository</h2>
-        <pre><code>git clone https://github.com/USERNAME/REPOSITORY.git
+<!-- CONTENT CARD -->
+<div class="card">
+    <h2>Overview</h2>
+    <p>
+        This redesigned page adopts Apple’s refined design philosophy:
+        soft gradients, clean typography, large breathing space,
+        and a glass-morphism layer to deliver a truly premium experience.
+    </p>
+</div>
+
+<div class="card">
+    <h2>Clone the Repository</h2>
+<pre><code>git clone https://github.com/USERNAME/REPOSITORY.git
 cd REPOSITORY</code></pre>
-    </div>
+</div>
 
-    <div class="section">
-        <h2>Folder Structure</h2>
-        <pre><code>/
+<div class="card">
+    <h2>Folder Structure</h2>
+<pre><code>/
 ├── index.html
 ├── assets/
 │   └── images/
 └── docs/
     └── readme.md</code></pre>
-    </div>
+</div>
 
-    <div class="section">
-        <h2>Links</h2>
-        <p>Repository:  
-        <a href="#">https://github.com/USERNAME/REPOSITORY</a></p>
-
-        <p>GitHub Pages:  
-        <code>https://USERNAME.github.io/REPOSITORY/</code></p>
-    </div>
-
+<div class="card">
+    <h2>Links</h2>
+    <p><a href="#">GitHub Repository</a></p>
+    <p><code>https://USERNAME.github.io/REPOSITORY/</code></p>
 </div>
 
 <footer>
-    © 2025 — Apple-Inspired Repository Template
+    © 2025 — Apple-Inspired Premium Template
 </footer>
 
 </body>
