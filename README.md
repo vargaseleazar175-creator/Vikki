@@ -1,156 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>My Repository — Apple Premium</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+import time
+import random
 
-<style>
-/* ---------------- GLOBAL STYLE ---------------- */
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
-                 "Segoe UI", Arial, sans-serif;
-    background: #fafafa;
-    color: #1d1d1f;
-    overflow-x: hidden;
-}
+# --- Итеративный (быстрый) подход ---
 
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
+def fibonacci_iterative(n):
+    """
+    Вычисляет n-е число Фибоначчи итеративно (используя цикл). 
+    Этот метод очень эффективен по времени (O(n)).
+    """
+    if n <= 0:
+        return 0
+    if n == 1:
+        return 1
+    
+    a, b = 0, 1
+    # Цикл выполняет n-1 итерацию
+    for _ in range(2, n + 1):
+        a, b = b, a + b
+        
+    return b
 
-@keyframes fade {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
+# --- Рекурсивный (медленный) подход ---
 
-/* ---------------- HERO ---------------- */
-.hero {
-    height: 85vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: radial-gradient(circle at 50% 20%, #ffffff, #e5e5e7);
-    padding: 0 20px;
-    animation: fade 1.4s ease-out;
-}
+def fibonacci_recursive(n):
+    """
+    Вычисляет n-е число Фибоначчи рекурсивно. 
+    Этот метод медленный (экспоненциальный O(2^n)) из-за повторных вычислений.
+    """
+    if n <= 0:
+        return 0
+    if n == 1:
+        return 1
+    # 
+    # Вызов самой себя дважды для каждого шага
+    return fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)
 
-.hero h1 {
-    font-size: 64px;
-    font-weight: 700;
-    letter-spacing: -1.5px;
-    margin-bottom: 15px;
-}
+# --- Основная часть программы и тестирование ---
 
-.hero p {
-    font-size: 22px;
-    color: #6e6e73;
-}
+# 1. Выбираем случайное число N для вычисления
+# Выбираем не слишком большое число, чтобы рекурсия не заняла вечность (например, N до 35)
+RANDOM_N = random.randint(25, 35) 
 
-/* ---------------- GLASS CARD ---------------- */
-.card {
-    max-width: 1000px;
-    margin: 80px auto;
-    padding: 50px;
-    border-radius: 30px;
-    background: rgba(255,255,255,0.65);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.08);
-    animation: fadeUp 1.2s ease-out;
-}
+print("--- 🔬 СРАВНЕНИЕ АЛГОРИТМОВ ФИБОНАЧЧИ ---")
+print(f"Цель: Найти {RANDOM_N}-е число Фибоначчи.")
+print("-" * 50)
 
-.card h2 {
-    font-size: 36px;
-    margin-bottom: 18px;
-}
+# --- 2. Тестирование ИТЕРАТИВНОГО метода ---
 
-.card p {
-    font-size: 20px;
-    color: #515154;
-}
+start_time_iterative = time.perf_counter()
+result_iterative = fibonacci_iterative(RANDOM_N)
+end_time_iterative = time.perf_counter()
+time_iterative = end_time_iterative - start_time_iterative
 
-/* ---------------- CODE BLOCK ---------------- */
-pre {
-    background: #f2f2f5;
-    padding: 20px;
-    border-radius: 18px;
-    font-size: 16px;
-    overflow-x: auto;
-    border: 1px solid #e0e0e2;
-}
+print("🚀 ИТЕРАТИВНЫЙ МЕТОД:")
+print(f"  Результат: {result_iterative}")
+print(f"  Время выполнения: {time_iterative:.6f} сек")
+print("-" * 50)
 
-code {
-    font-family: "SF Mono", monospace;
-    color: #1d1d1f;
-}
+# --- 3. Тестирование РЕКУРСИВНОГО метода ---
 
-/* ---------------- LINKS ---------------- */
-a {
-    color: #0071e3;
-    text-decoration: none;
-    font-weight: 500;
-}
-a:hover { text-decoration: underline; }
+start_time_recursive = time.perf_counter()
+result_recursive = fibonacci_recursive(RANDOM_N)
+end_time_recursive = time.perf_counter()
+time_recursive = end_time_recursive - start_time_recursive
 
-/* ---------------- FOOTER ---------------- */
-footer {
-    text-align: center;
-    padding: 60px 20px;
-    color: #86868b;
-    font-size: 14px;
-}
-</style>
+print("🐢 РЕКУРСИВНЫЙ МЕТОД:")
+print(f"  Результат: {result_recursive}")
+print(f"  Время выполнения: {time_recursive:.6f} сек")
+print("-" * 50)
 
-</head>
-<body>
+# --- 4. Сравнение ---
+speed_ratio = time_recursive / time_iterative if time_iterative > 0 else 0
 
-<!-- HERO -->
-<section class="hero">
-    <div>
-        <h1>My GitHub Repository</h1>
-        <p>Designed with clarity, precision, and the elegance of Apple.</p>
-    </div>
-</section>
-
-<!-- CONTENT CARD -->
-<div class="card">
-    <h2>Overview</h2>
-    <p>
-        This redesigned page adopts Apple’s refined design philosophy:
-        soft gradients, clean typography, large breathing space,
-        and a glass-morphism layer to deliver a truly premium experience.
-    </p>
-</div>
-
-<div class="card">
-    <h2>Clone the Repository</h2>
-<pre><code>git clone https://github.com/USERNAME/REPOSITORY.git
-cd REPOSITORY</code></pre>
-</div>
-
-<div class="card">
-    <h2>Folder Structure</h2>
-<pre><code>/
-├── index.html
-├── assets/
-│   └── images/
-└── docs/
-    └── readme.md</code></pre>
-</div>
-
-<div class="card">
-    <h2>Links</h2>
-    <p><a href="#">GitHub Repository</a></p>
-    <p><code>https://USERNAME.github.io/REPOSITORY/</code></p>
-</div>
-
-<footer>
-    © 2025 — Apple-Inspired Premium Template
-</footer>
-
-</body>
-</html>
+print(f"✅ ВЫВОД: Итеративный метод был быстрее в {speed_ratio:.1f} раз при N={RANDOM_N}.")
+print(f"  (Обратите внимание, что для малых N разница может быть небольшой, но для N > 40 рекурсия может занять минуты.)")
